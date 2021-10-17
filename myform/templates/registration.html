@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registration</title>
+    </head>
+    <body>
+        {% if message %}
+            <h1>{{ message }}</h1>
+        {% endif %}
+        <form action = "{% url 'registration' %}" method = "POST">
+            {% csrf_token %}
+            <div>
+                <label for = "uname">UserName</label>
+                <input type = "text" placeholder = "Username" name = "username" id = "uname">
+            </div>
+            <br><br>
+            <div>
+                <label for = "fname">First Name</label>
+                <input type = "text" placeholder = "First Name" name = "first_name" id = "fname">
+            </div>
+            <br><br>
+            <div>
+                <label for = "lname">Last Name</label>
+                <input type = "text" placeholder = "Last Name" name = "last_name" id = "lname">
+            </div>
+            <br><br>
+            <div>
+                <label for = "dt">Date of Birth</label>
+                <input type="date" name = "dob" id = "dt"> 
+            </div>
+            <br><br>
+            <div>
+                <label for = "mob">Mobile No.</label>
+                <input type = "number" placeholder = "Mobile" name = "mobile" id = "mob">
+            </div>
+            <br><br>
+            <div>
+                <p>Select Gender: </p>
+                <ul>
+                    <li>
+                        <label for = "m">Male</label>
+                        <input type = "radio" value = "Male" label= "Male" name = "gender" id = "m"></li>
+                    <li>
+                        <label for = "f">Female</label>
+                        <input type = "radio" value = "Female" label= "Female" name = "gender" id = "f"></li>
+                    <li>
+                        <label for = "o">Other</label>
+                        <input type = "radio" value = "Other" label= "Other" name = "gender" id = "o"></li>
+                    <li>
+                        <label for = "n">Prefer Not Say</label>
+                        <input type = "radio" value = "Not say" label= "Not say" name = "gender" id = "n"></li>
+                </ul>
+            </div>
+            <br><br>
+            <div>
+                <label for = "mail">Email-ID</label>
+                <input type = "text" placeholder = "Email" name = "email" id = "mail">
+            </div>
+            <br><br>
+            <div>
+                <label for = "pass1">Password</label>
+                <input type = "password" placeholder = "Password" name = "pass1" id = "pass1">
+            </div>
+            <br><br>
+            <div>
+                <label for = "pass2">Confirm Password</label>
+                <input type = "password" placeholder = "Confirm Password" name = "pass2" id = "pass2">
+            </div>
+            <br><br><br>
+            <input type = "submit">
+        </form>
+        <a href = "{% url 'login' %}">Back to Login Page.</a>
+    </body>
+</html>

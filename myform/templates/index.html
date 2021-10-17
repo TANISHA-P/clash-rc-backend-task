@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if message %}
+        <h1>{{message}}</h1>
+    {% endif %}
+    <form action = "{% url 'index' %}" method ="POST">
+        {% csrf_token %}
+        <label for = "ip">Input: </label>
+        <input type = text placeholder = "Input" name = "input" id = "ip">
+        <br><br>
+        <div>
+            <p>Select Filtration Category: </p>
+            <ul>
+                <li>
+                    <label for = "first_c">Filter out numbers from string greater than 100.</label>
+                    <input type = "radio" value = "firstc" name = "category" id = "first_c"></li>
+                <li>
+                    <label for = "second_c">Filter out date from string in yyyy-mm-dd format.</label>
+                    <input type = "radio" value = "secondc" name = "category" id = "second_c"></li>
+                <li>
+                    <label for = "third_c">Filter out string within single quotes in the given string.</label>
+                    <input type = "radio" value = "thirdc" name = "category" id = "third_c"></li>
+                <li>
+                    <label for = "fourth_c">Validate IP address and determine class</label>
+                    <input type = "radio" value = "fourthc" name = "category" id = "fourth_c"></li>
+                <li>
+                    <label for = "fifth_c">Validate MAC address.</label>
+                    <input type = "radio" value = "fifthc" name = "category" id = "fifth_c"></li>
+                <li>
+                    <label for = "sixth_c">Convert CamelCase to snake_case.</label>
+                    <input type = "radio" value = "sixthc" name = "category" id = "sixth_c"></li>
+            </ul>
+        </div>
+        <input type = "submit">
+    </form>
+    <br><br>
+    <h2>Output: </h2>
+    {% if output %}
+        {% for out in output %}
+            <h3>{{out}}</h3>
+        {% endfor %}
+    {% endif %}
+    {% if ip %}
+        <h4>{{ip}}</h4>
+    {% endif %}
+    {% if class %}
+        <h4>{{class}}</h4>
+    {% endif %}
+    <br><br><hr>
+    <a href = "{% url 'logout' %}">LOGOUT</a>
+</body>
+</html>
